@@ -7,7 +7,6 @@
 
 import AdSupport
 import AppTrackingTransparency
-import Clickstream
 import SwiftUI
 
 struct MainView: View {
@@ -21,10 +20,6 @@ struct MainView: View {
                     Image(systemName: "house")
                     Text("Home")
                 }.onAppear {
-                    let attribute: ClickstreamAttribute = [
-                        "tab_name": "home_tab"
-                    ]
-                    ClickstreamAnalytics.recordEvent("view_home", attribute)
                     AppDelegate.addEvent()
                 }
             CartView(cartProducts: cartItems)
@@ -33,10 +28,6 @@ struct MainView: View {
                     Image(systemName: "cart")
                     Text("Cart")
                 }.onAppear {
-                    let attribute: ClickstreamAttribute = [
-                        "tab_name": "cart_tab"
-                    ]
-                    ClickstreamAnalytics.recordEvent("view_cart", attribute)
                     AppDelegate.addEvent()
                 }
             ProfilView()
@@ -45,10 +36,6 @@ struct MainView: View {
                     Image(systemName: "person")
                     Text("Profile")
                 }.onAppear {
-                    let attribute: ClickstreamAttribute = [
-                        "tab_name": "profile_tab"
-                    ]
-                    ClickstreamAnalytics.recordEvent("view_profile", attribute)
                     AppDelegate.addEvent()
                 }
         }

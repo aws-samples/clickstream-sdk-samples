@@ -5,7 +5,6 @@
 //  Created by Djallil Elkebir on 2021-09-02.
 //
 
-import Clickstream
 import SwiftUI
 
 struct CartView: View {
@@ -41,7 +40,6 @@ struct CartView: View {
                 }
                 Text("Total: \(cartProducts.totalPrice.format(f: ".2"))$")
                 Button(action: {
-                    ClickstreamAnalytics.recordEvent("check_out_click")
                     AppDelegate.addEvent()
                     withAnimation { cartProducts.showShowcaseSheet.toggle()
                     }
@@ -78,7 +76,6 @@ struct CartView: View {
     var trailingItem: some View {
         Button(action: { withAnimation {
             showDelete.toggle()
-            ClickstreamAnalytics.recordEvent("cart_show_delete_click")
             AppDelegate.addEvent()
         }}) {
             Image(systemName: "slider.horizontal.3")
