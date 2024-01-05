@@ -11,7 +11,6 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
 import com.facebook.react.defaults.DefaultReactNativeHost;
 import com.facebook.soloader.SoLoader;
-import software.aws.solution.clickstream.ClickstreamAnalytics;
 
 import java.util.List;
 
@@ -64,16 +63,5 @@ public class MainApplication extends Application implements ReactApplication {
         }
         ReactNativeFlipper.initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
 
-        // Init ClickstreamAnalytics
-        try {
-            ClickstreamAnalytics.init(getApplicationContext());
-
-            ClickstreamAnalytics.getClickStreamConfiguration()
-                .withLogEvents(true)
-                .withTrackScreenViewEvents(false)
-                .withTrackUserEngagementEvents(false);
-        } catch (AmplifyException e) {
-            e.printStackTrace();
-        }
     }
 }
