@@ -13,11 +13,7 @@ import com.kanyideveloper.joomia.feature_auth.domain.use_case.LoginUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import software.aws.solution.clickstream.ClickstreamAnalytics
-import software.aws.solution.clickstream.ClickstreamUserAttribute
 import javax.inject.Inject
 
 @HiltViewModel

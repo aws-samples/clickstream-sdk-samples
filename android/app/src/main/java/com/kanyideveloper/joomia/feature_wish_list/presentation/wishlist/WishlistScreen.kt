@@ -37,7 +37,6 @@ import com.kanyideveloper.joomia.feature_wish_list.domain.model.Wishlist
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlinx.coroutines.flow.collectLatest
-import software.aws.solution.clickstream.ClickstreamAnalytics
 
 @Destination
 @Composable
@@ -50,7 +49,6 @@ fun WishlistScreen(
     val scaffoldState = rememberScaffoldState()
 
     LaunchedEffect(key1 = true) {
-        ClickstreamAnalytics.recordEvent("view_wishlist")
         viewModel.eventFlow.collectLatest { event ->
             when (event) {
                 is UiEvents.SnackbarEvent -> {

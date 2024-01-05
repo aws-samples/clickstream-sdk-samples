@@ -46,7 +46,6 @@ import com.kanyideveloper.joomia.feature_profile.domain.model.getDisplayName
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlinx.coroutines.flow.collectLatest
-import software.aws.solution.clickstream.ClickstreamAnalytics
 import java.util.*
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -64,7 +63,6 @@ fun AccountScreen(
     val scaffoldState = rememberScaffoldState()
 
     LaunchedEffect(key1 = true) {
-        ClickstreamAnalytics.recordEvent("view_account")
         viewModel.eventFlow.collectLatest { event ->
             when (event) {
                 is UiEvents.SnackbarEvent -> {
