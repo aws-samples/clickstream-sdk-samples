@@ -15,19 +15,29 @@ We look forward to seeing the insightful ways you leverage Clickstream for enhan
 Android example app **Joomia** shopping app is forked from https://github.com/joelkanyi/Joomia. To get started with the Android example, refer to the [Android Example README](android/README.md).
 
 More references:
+
 [Clickstream Android SDK Repositry](https://github.com/awslabs/clickstream-android)
+
 [Clickstream Android SDK Manual](https://awslabs.github.io/clickstream-analytics-on-aws/en/latest/sdk-manual/android/)
+
+License: [Apache-2.0](https://github.com/joelkanyi/Joomia/blob/main/LICENSE)
+
 
 ## Swift SDK Example
 iOS example app **Shopping** App is forked from https://github.com/Djallil14/SwiftUI-FakeShopping-App. To get started with the iOS example, refer to the [iOS Example README](ios/README.md).
 
 More references:
+
 [Clickstream Swift SDK Repositry](https://github.com/awslabs/clickstream-swift)
+
 [Clickstream Swfit SDK Manual](https://awslabs.github.io/clickstream-analytics-on-aws/en/latest/sdk-manual/swift/)
+
+License: [MIT](https://github.com/Djallil14/SwiftUI-FakeShopping-App/blob/main/LICENSE.md)
 
 ## React-Native Example
 React-Native example app **v2ex** is forked from https://github.com/funnyzak/react-native-v2ex. To get started with the React-Native example, refer to the [React-Native Example README](react-native/README.md).
 
+License: [Apache-2.0](https://github.com/funnyzak/react-native-v2ex/blob/dev/LICENSE)
 
 ## Security
 
