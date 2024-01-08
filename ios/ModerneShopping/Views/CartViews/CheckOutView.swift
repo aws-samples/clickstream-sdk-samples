@@ -5,6 +5,7 @@
 //  Created by Djallil Elkebir on 2021-09-07.
 //
 
+import Clickstream
 import SwiftUI
 
 struct CheckOutView: View {
@@ -63,6 +64,11 @@ struct CheckOutView: View {
                         .font(.caption)
                     Button(action: {
                         print("Paying ...")
+                        let attribute: ClickstreamAttribute = [
+                            "final_price": price,
+                            "product_count": products.count,
+                        ]
+                        ClickstreamAnalytics.recordEvent("purchase", attribute)
                         AppDelegate.addEvent()
                     }) {
                         Text("Click Here to Pay").bold()
