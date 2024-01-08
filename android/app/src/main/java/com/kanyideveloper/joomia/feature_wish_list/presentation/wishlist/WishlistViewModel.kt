@@ -11,6 +11,9 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
+import software.aws.solution.clickstream.ClickstreamAnalytics
+import software.aws.solution.clickstream.ClickstreamEvent
+import software.aws.solution.clickstream.ClickstreamItem
 import javax.inject.Inject
 
 @HiltViewModel
@@ -27,6 +30,20 @@ class WishlistViewModel @Inject constructor(
         viewModelScope.launch {
             repository.insertToWishlist(wishlist)
         }
+        val itemProduct = ClickstreamItem.builder()
+            .add(ClickstreamAnalytics.Item.ITEM_ID, wishlist.id)
+            .add(ClickstreamAnalytics.Item.ITEM_NAME, wishlist.title)
+            .add(ClickstreamAnalytics.Item.ITEM_CATEGORY, wishlist.category)
+            .add(ClickstreamAnalytics.Item.PRICE, wishlist.price)
+            .add("rating", wishlist.rating.rate)
+            .add("description", wishlist.description)
+            .build()
+        val event = ClickstreamEvent.builder()
+            .name("add_to_wishlist")
+            .add("item_id", wishlist.id)
+            .setItems(arrayOf(itemProduct))
+            .build()
+        ClickstreamAnalytics.recordEvent(event)
     }
 
     fun inWishlist(id: Int): LiveData<Boolean> {
@@ -40,6 +57,20 @@ class WishlistViewModel @Inject constructor(
                 UiEvents.SnackbarEvent(message = "Item removed from wishlist")
             )
         }
+        val itemProduct = ClickstreamItem.builder()
+            .add(ClickstreamAnalytics.Item.ITEM_ID, wishlist.id)
+            .add(ClickstreamAnalytics.Item.ITEM_NAME, wishlist.title)
+            .add(ClickstreamAnalytics.Item.ITEM_CATEGORY, wishlist.category)
+            .add(ClickstreamAnalytics.Item.PRICE, wishlist.price)
+            .add("rating", wishlist.rating.rate)
+            .add("description", wishlist.description)
+            .build()
+        val event = ClickstreamEvent.builder()
+            .name("remove_from_wishlist")
+            .add("item_id", wishlist.id)
+            .setItems(arrayOf(itemProduct))
+            .build()
+        ClickstreamAnalytics.recordEvent(event)
     }
 
     fun deleteAllWishlist() {

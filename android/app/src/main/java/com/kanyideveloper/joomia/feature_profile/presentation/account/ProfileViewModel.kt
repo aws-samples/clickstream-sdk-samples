@@ -18,6 +18,7 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import software.aws.solution.clickstream.ClickstreamAnalytics
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -51,6 +52,7 @@ class ProfileViewModel @Inject constructor(
             Timber.d("Result: ${result.message}")
             when (result) {
                 is Resource.Success -> {
+                    ClickstreamAnalytics.setUserId(null)
                     _eventFlow.emit(
                         UiEvents.NavigateEvent(route = AuthDashboardScreenDestination.route)
                     )

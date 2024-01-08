@@ -8,6 +8,8 @@ import com.kanyideveloper.joomia.feature_auth.data.remote.request.LoginRequest
 import com.kanyideveloper.joomia.feature_auth.domain.repository.LoginRepository
 import kotlinx.coroutines.flow.first
 import retrofit2.HttpException
+import software.aws.solution.clickstream.ClickstreamAnalytics
+import software.aws.solution.clickstream.ClickstreamUserAttribute
 import timber.log.Timber
 import java.io.IOException
 import kotlin.random.Random
@@ -24,6 +26,15 @@ class LoginRepositoryImpl(
                 val gender = if (Random.nextBoolean()) "women" else "men"
                 it.avatar = avatarUrl + gender + "/" + Random.nextInt(0, 99) + ".jpg"
                 dataPreferences.saveUserdata(it)
+                ClickstreamAnalytics.setUserId(it.id.toString())
+                val userAttribute = ClickstreamUserAttribute.builder()
+                    .add("user_name", it.name.firstname + " " + it.name.lastname)
+                    .add("email", it.email)
+                    .add("phone", it.phone)
+                    .add("gender", gender)
+                    .build()
+                ClickstreamAnalytics.addUserAttributes(userAttribute)
+                ClickstreamAnalytics.recordEvent("login")
 
                 val randomLoginRequest = LoginRequest(
                     username = it.username.trim(),

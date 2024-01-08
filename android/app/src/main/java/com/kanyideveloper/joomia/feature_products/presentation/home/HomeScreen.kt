@@ -1,6 +1,7 @@
 package com.kanyideveloper.joomia.feature_products.presentation.home
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.*
@@ -16,7 +17,12 @@ import androidx.compose.material.MaterialTheme.typography
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AddShoppingCart
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
@@ -25,9 +31,11 @@ import androidx.compose.ui.Alignment.Companion.End
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.semantics
@@ -58,6 +66,10 @@ import com.kanyideveloper.joomia.feature_profile.domain.model.getDisplayName
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlinx.coroutines.flow.collectLatest
+import software.aws.solution.clickstream.ClickstreamAnalytics
+import software.aws.solution.clickstream.ClickstreamEvent
+import software.aws.solution.clickstream.ClickstreamItem
+import timber.log.Timber
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @OptIn(ExperimentalComposeUiApi::class)
@@ -72,6 +84,7 @@ fun HomeScreen(
     val productsState = viewModel.productsState.value
     val categories = viewModel.categoriesState.value
     LaunchedEffect(key1 = true, block = {
+        ClickstreamAnalytics.recordEvent("view_home")
         viewModel.getProfile()
     })
     val user = viewModel.profileState.value
@@ -133,6 +146,20 @@ private fun HomeScreenContent(
             // Actual product items list
             items(productsState.products) { product ->
                 LaunchedEffect(product.id) {
+                    val itemProduct = ClickstreamItem.builder()
+                        .add(ClickstreamAnalytics.Item.ITEM_ID, product.id)
+                        .add(ClickstreamAnalytics.Item.ITEM_NAME, product.title)
+                        .add(ClickstreamAnalytics.Item.ITEM_CATEGORY, product.category)
+                        .add(ClickstreamAnalytics.Item.PRICE, product.price)
+                        .add("rating", product.rating.rate)
+                        .add("description", product.description)
+                        .build()
+                    val event = ClickstreamEvent.builder()
+                        .name("product_exposure")
+                        .add("item_id", product.id)
+                        .setItems(arrayOf(itemProduct))
+                        .build()
+                    ClickstreamAnalytics.recordEvent(event)
                 }
                 ProductItem(
                     product = product,
@@ -250,6 +277,21 @@ private fun ProductItem(
 
             OutlinedButton(
                 onClick = {
+                    val itemProduct = ClickstreamItem.builder()
+                        .add(ClickstreamAnalytics.Item.ITEM_ID, product.id)
+                        .add(ClickstreamAnalytics.Item.ITEM_NAME, product.title)
+                        .add(ClickstreamAnalytics.Item.ITEM_CATEGORY, product.category)
+                        .add(ClickstreamAnalytics.Item.PRICE, product.price)
+                        .add("rating", product.rating.rate)
+                        .add("description", product.description)
+                        .build()
+                    val event = ClickstreamEvent.builder()
+                        .name("add_to_cart")
+                        .add("item_id", product.id)
+                        .add("page_name", "home_screen")
+                        .setItems(arrayOf(itemProduct))
+                        .build()
+                    ClickstreamAnalytics.recordEvent(event)
                 },
                 modifier = Modifier
                     .size(40.dp)
