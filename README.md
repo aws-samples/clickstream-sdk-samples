@@ -14,6 +14,8 @@ We look forward to seeing the insightful ways you leverage Clickstream for enhan
 ## Android SDK Example
 Android example app **Joomia** shopping app is forked from https://github.com/joelkanyi/Joomia. To get started with the Android example, refer to the [Android Example README](android/README.md).
 
+You can refer this [PR](https://github.com/aws-samples/clickstream-sdk-samples/pull/6/files) to learn how to integrate Clickstream Android SDK.
+
 More references:
 
 [Clickstream Android SDK Repositry](https://github.com/awslabs/clickstream-android)
