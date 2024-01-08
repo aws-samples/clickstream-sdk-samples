@@ -39,6 +39,7 @@ public class MyAppPackage implements ReactPackage {
         @NonNull ReactApplicationContext reactContext) {
         List<NativeModule> modules = new ArrayList<>();
 
+        modules.add(new ClickstreamModule(reactContext));
         return modules;
     }
 }

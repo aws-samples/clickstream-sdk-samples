@@ -46,6 +46,15 @@
       }
     },
     {
+      "identity" : "clickstream-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/awslabs/clickstream-swift.git",
+      "state" : {
+        "revision" : "1708b7597ec014e25a00f5c724e58972e3f8328b",
+        "version" : "0.8.0"
+      }
+    },
+    {
       "identity" : "gzipswift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/1024jp/GzipSwift",

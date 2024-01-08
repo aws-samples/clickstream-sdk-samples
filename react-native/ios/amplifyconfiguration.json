@@ -1,0 +1,13 @@
+{
+  "analytics": {
+    "plugins": {
+      "awsClickstreamPlugin": {
+        "appId": "your appId",
+        "endpoint": "your endpoint",
+        "isCompressEvents": true,
+        "autoFlushEventsInterval": 10000,
+        "isTrackAppExceptionEvents": false
+      }
+    }
+  }
+}
