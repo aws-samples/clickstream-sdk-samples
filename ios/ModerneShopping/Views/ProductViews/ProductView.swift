@@ -5,6 +5,7 @@
 //  Created by Djallil Elkebir on 2021-09-01.
 //
 
+import Clickstream
 import SwiftUI
 
 struct ProductView: View {
@@ -80,6 +81,13 @@ struct ProductView: View {
             }
         }.navigationBarTitleDisplayMode(.large)
             .onAppear {
+                let attributes: ClickstreamAttribute = [
+                    "product_id": product.id,
+                    "product_title": product.title,
+                    "product_price": product.price,
+                    "product_category": product.category,
+                ]
+                ClickstreamAnalytics.recordEvent("product_click", attributes)
                 AppDelegate.addEvent()
                 ProductView.isShow = true
             }.onDisappear {

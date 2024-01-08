@@ -28,6 +28,8 @@ License: [Apache-2.0](https://github.com/joelkanyi/Joomia/blob/main/LICENSE)
 ## Swift SDK Example
 iOS example app **Shopping** App is forked from https://github.com/Djallil14/SwiftUI-FakeShopping-App. To get started with the iOS example, refer to the [iOS Example README](ios/README.md).
 
+You can refer this [PR](https://github.com/aws-samples/clickstream-sdk-samples/pull/7/files) to learn how to integrate Clickstream Swift SDK.
+
 More references:
 
 [Clickstream Swift SDK Repositry](https://github.com/awslabs/clickstream-swift)

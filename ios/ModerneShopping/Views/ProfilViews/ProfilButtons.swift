@@ -5,6 +5,7 @@
 //  Created by Djallil Elkebir on 2021-09-06.
 //
 
+import Clickstream
 import SwiftUI
 
 struct ProfilButtons: View {
@@ -24,6 +25,7 @@ struct ProfilButtons: View {
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .foregroundColor(.black)
                 }.onAppear {
+                    ClickstreamAnalytics.recordEvent("update_account_click")
                     AppDelegate.addEvent()
                 }
             }, isActive: $isAccountActive) {
@@ -46,6 +48,7 @@ struct ProfilButtons: View {
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .foregroundColor(.black)
                 }.onAppear {
+                    ClickstreamAnalytics.recordEvent("history_click")
                     AppDelegate.addEvent()
                 }
             }, isActive: $isHistoryActive) {
@@ -67,6 +70,7 @@ struct ProfilButtons: View {
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .foregroundColor(.black)
                 }.onAppear {
+                    ClickstreamAnalytics.recordEvent("orders_click")
                     AppDelegate.addEvent()
                 }
             }, isActive: $isOrdersActive) {
