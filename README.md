@@ -41,6 +41,8 @@ License: [MIT](https://github.com/Djallil14/SwiftUI-FakeShopping-App/blob/main/L
 ## React-Native Example
 React-Native example app **v2ex** is forked from https://github.com/funnyzak/react-native-v2ex. To get started with the React-Native example, refer to the [React-Native Example README](react-native/README.md).
 
+You can refer this [PR](https://github.com/aws-samples/clickstream-sdk-samples/pull/8/files) to learn how to integrate Clickstream Android and Swift SDK into react-native app.
+
 License: [Apache-2.0](https://github.com/funnyzak/react-native-v2ex/blob/dev/LICENSE)
 
 ## Security

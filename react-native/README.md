@@ -1,5 +1,7 @@
 # React Native V2EX
 
+The project is already integrated with Clickstream Android and Swift SDK. You can find more detail about [Clickstream Android SDK](https://github.com/awslabs/clickstream-android) and [Clickstream Swift SDK](https://github.com/awslabs/clickstream-swift).
+
 The project used React Native to build a [V2EX](https://v2ex.com) mobile client application and based entirely on the [V2EX](https://v2ex.com) open API. This project is Based on RN 0.71.5.
 
 The `Figma design draft` is open source and can be [duplicated](https://www.figma.com/community/file/1101074002447399194).

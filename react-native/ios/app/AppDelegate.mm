@@ -1,6 +1,7 @@
 #import "AppDelegate.h"
 #import <React/RCTBundleURLProvider.h>
 #import "RNSplashScreen.h" // react-native-splash-screen
+@import Clickstream;
 
 @implementation AppDelegate
 
@@ -14,6 +15,21 @@
   [super application:application didFinishLaunchingWithOptions:launchOptions];
 
   [RNSplashScreen show]; // react-native-splash-screen
+  
+  NSError *error = nil;
+  [ClickstreamObjc initSDKAndReturnError:&error];
+ 
+  if (error) {
+      NSLog(@"Failed to initialize ClickstreamAnalytics: %@", error.localizedDescription);
+  }
+  ClickstreamContextConfiguration *configuration = [ClickstreamObjc getClickstreamConfigurationAndReturnError:&error];
+  if (configuration) {
+      [configuration setIsLogEvents:true];
+      [configuration setIsTrackScreenViewEvents:false];
+      [configuration setIsTrackUserEngagementEvents:false];
+  }else{
+      NSLog(@"Failed to get configuration: %@", error.localizedDescription);
+  }
   
   return YES;
 }

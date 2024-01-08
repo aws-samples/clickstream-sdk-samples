@@ -30,10 +30,14 @@ import {
 import { cacheMemberFollowing, cacheMemberInterestNodes, cacheMemberLikeTopicss } from './CacheAction'
 import { NativeModules } from 'react-native'
 
+const { ClickstreamAnalytics } = NativeModules
 
 export const myProfile = () => async (dispatch: Dispatch, getState: () => RootState) => {
   const _member = await ApiLib.member.myProfile()
   console.log('member:' + JSON.stringify(_member))
+  ClickstreamAnalytics.setUserId(_member.id.toString())
+  ClickstreamAnalytics.addUserAttributes({ user_name: _member.username })
+  ClickstreamAnalytics.recordEventWithName('login')
   dispatch({
     type: MEMBER_PROFILE,
     payload: _member
@@ -133,4 +137,5 @@ export const logout = () => (dispatch: Dispatch) => {
   ApiLib.setToken(undefined)
   dispatch({ type: APP_LOGOUT })
   NavigationService.navigate('SignIn')
+  ClickstreamAnalytics.setUserId(null)
 }

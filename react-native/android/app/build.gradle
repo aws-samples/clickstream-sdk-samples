@@ -175,6 +175,8 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+    implementation("software.aws.solution:clickstream:0.9.0")
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.10"))
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)

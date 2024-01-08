@@ -11,6 +11,10 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		3A46E88B2B26B70F0042C324 /* Clickstream in Frameworks */ = {isa = PBXBuildFile; productRef = 3A46E88A2B26B70F0042C324 /* Clickstream */; };
+		3A78F5E02B26DB16006001B7 /* ClickstreamManager.h in Sources */ = {isa = PBXBuildFile; fileRef = 3A78F5DF2B26DB16006001B7 /* ClickstreamManager.h */; };
+		3A78F5E22B26DC73006001B7 /* ClickstreamManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A78F5E12B26DC73006001B7 /* ClickstreamManager.m */; };
+		3A78F5E72B26E58A006001B7 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A78F5E62B26E58A006001B7 /* amplifyconfiguration.json */; };
 		6172F2D35A4C3AA820D92908 /* libPods-app.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6423831EA8574132BED9D8CC /* libPods-app.a */; };
 		7EF68E3733C33B6898317E18 /* libPods-app-appTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFE59519B596E51CEFDCCC0 /* libPods-app-appTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
@@ -37,6 +41,8 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = app/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = app/main.m; sourceTree = "<group>"; };
 		1D0AE47A65C8663E3B452821 /* Pods-app-appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app-appTests.release.xcconfig"; path = "Target Support Files/Pods-app-appTests/Pods-app-appTests.release.xcconfig"; sourceTree = "<group>"; };
+		3A78F5DF2B26DB16006001B7 /* ClickstreamManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClickstreamManager.h; sourceTree = "<group>"; };
+		3A78F5E12B26DC73006001B7 /* ClickstreamManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClickstreamManager.m; sourceTree = "<group>"; };
 		3A78F5E32B26E493006001B7 /* app-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "app-Bridging-Header.h"; sourceTree = "<group>"; };
 		3A78F5E62B26E58A006001B7 /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		6423831EA8574132BED9D8CC /* libPods-app.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-app.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +68,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6172F2D35A4C3AA820D92908 /* libPods-app.a in Frameworks */,
+				3A46E88B2B26B70F0042C324 /* Clickstream in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +102,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				3A78F5DF2B26DB16006001B7 /* ClickstreamManager.h */,
+				3A78F5E12B26DC73006001B7 /* ClickstreamManager.m */,
 				3A78F5E32B26E493006001B7 /* app-Bridging-Header.h */,
 			);
 			name = app;
@@ -195,6 +204,7 @@
 			);
 			name = app;
 			packageProductDependencies = (
+				3A46E88A2B26B70F0042C324 /* Clickstream */,
 			);
 			productName = app;
 			productReference = 13B07F961A680F5B00A75B9A /* app.app */;
@@ -227,6 +237,7 @@
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			packageReferences = (
+				3A46E8892B26B70F0042C324 /* XCRemoteSwiftPackageReference "clickstream-swift" */,
 			);
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
@@ -419,8 +430,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A78F5E22B26DC73006001B7 /* ClickstreamManager.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				3A78F5E02B26DB16006001B7 /* ClickstreamManager.h in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -718,9 +731,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3A46E8892B26B70F0042C324 /* XCRemoteSwiftPackageReference "clickstream-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/awslabs/clickstream-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.8.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3A46E88A2B26B70F0042C324 /* Clickstream */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A46E8892B26B70F0042C324 /* XCRemoteSwiftPackageReference "clickstream-swift" */;
+			productName = Clickstream;
+		};
 /* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 83CBB9F71A601CBA00E9B192 /* Project object */;
