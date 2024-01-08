@@ -3,8 +3,6 @@
 # Joomia
 A fake shopping app built with Jetpack Compose consuming [FAKE STORE API](https://fakestoreapi.com/)
 
-And this app is already integrated with Clickstream Android SDK. You can find more detail about the [Clickstream Android SDK](https://github.com/awslabs/clickstream-android).
-
 ## Note:
 - The API has some endpoints that does nothing i.e adding item to cart, registering a user and many more. So some screens have UI implementation but no logic
 - Contributions are welcomed, because the app is far away from being good
