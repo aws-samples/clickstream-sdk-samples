@@ -18,7 +18,7 @@ You can refer this [PR](https://github.com/aws-samples/clickstream-sdk-samples/p
 
 More references:
 
-[Clickstream Android SDK Repositry](https://github.com/awslabs/clickstream-android)
+[Clickstream Android SDK Repository](https://github.com/awslabs/clickstream-android)
 
 [Clickstream Android SDK Manual](https://awslabs.github.io/clickstream-analytics-on-aws/en/latest/sdk-manual/android/)
 
@@ -32,9 +32,9 @@ You can refer this [PR](https://github.com/aws-samples/clickstream-sdk-samples/p
 
 More references:
 
-[Clickstream Swift SDK Repositry](https://github.com/awslabs/clickstream-swift)
+[Clickstream Swift SDK Repository](https://github.com/awslabs/clickstream-swift)
 
-[Clickstream Swfit SDK Manual](https://awslabs.github.io/clickstream-analytics-on-aws/en/latest/sdk-manual/swift/)
+[Clickstream Swift SDK Manual](https://awslabs.github.io/clickstream-analytics-on-aws/en/latest/sdk-manual/swift/)
 
 License: [MIT](https://github.com/Djallil14/SwiftUI-FakeShopping-App/blob/main/LICENSE.md)
 
