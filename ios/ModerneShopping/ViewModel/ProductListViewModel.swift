@@ -41,23 +41,11 @@ class ProductsListObject: ObservableObject {
         DispatchQueue.main.async {
             self.isLoading = true
         }
-        productListServices.fetchProducts(from: url) { result in
-            DispatchQueue.main.async {
-                self.isLoading = true
-            }
-            switch result {
-            case .success(let response):
-                DispatchQueue.main.async {
-                    self.products = response
-                    self.AllProducts[url.description] = self.products
-                    self.isLoading = false
-                }
-            case .failure(let error):
-                DispatchQueue.main.async {
-                    self.error = error as NSError
-                    print(error.localizedDescription)
-                }
-            }
+        let response: [Product]? = try? Bundle.main.loadAndDecodeJSON(filename: "products")
+        DispatchQueue.main.async {
+            self.products = response
+            self.AllProducts[url.description] = self.products
+            self.isLoading = false
         }
     }
 }

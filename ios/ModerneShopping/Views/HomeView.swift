@@ -39,6 +39,7 @@ struct HomeView: View {
                             ProductCarousel(products: productsList.featuredProduct)
                                 .environmentObject(cart)
                                 .padding(.top)
+                                .accessibilityIdentifier("product_banner")
                         } else {
                             LoadingView(isLoading: productsList.isLoading, error: productsList.error) { productsList.loadProducts(with: pickedCategory)
                             }.padding(.top, 60)
