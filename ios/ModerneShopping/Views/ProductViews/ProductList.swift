@@ -20,9 +20,7 @@ struct ProductList: View {
                         ProductListItem(product: product)
                     }.accessibilityIdentifier("product_\(index)")
                         .onAppear {
-                            if index==0 || index==1 {
-                                cart.addToCart(addedProduct: product, quantity: 1)
-                            }
+                            if index==0 || index==1 {}
                         }
                     Button(action: {
                         withAnimation {
