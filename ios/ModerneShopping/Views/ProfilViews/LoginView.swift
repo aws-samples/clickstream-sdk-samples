@@ -86,13 +86,14 @@ struct LoginView: View {
                             .background(Color.secondaryBackground)
                             .cornerRadius(16)
                             .shadow(color: .darkText.opacity(0.2), radius: 2, x: 1.0, y: 2)
-                    }
+                    }.accessibilityIdentifier("sign_in")
                     Button(action: { withAnimation {
                         showSheet.toggle()
                     }}) {
-                        Text("Create an account").font(.headline)
+                        Text("Show clickstream log").font(.headline)
                             .foregroundColor(.darkText)
                             .shadow(color: .darkText.opacity(0.1), radius: 2, x: 1, y: 2)
+                            .accessibilityIdentifier("show_log_text")
                     }
                 }
                 .padding()
@@ -101,17 +102,13 @@ struct LoginView: View {
                 Spacer()
             }.padding()
                 .sheet(isPresented: $showSheet) {
-                    
-                    Button(action: {
-                        showSheet = false
-                    }) {
-                        Text("Create an account or forgot password")
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .foregroundColor(.black)
-                    }
-//                    Text("Create an account or forgot password").onTapGesture {
-//                        showSheet = false
-//                    }.frame(height: 800)
+                    Text(UIPasteboard.general.string ?? "No event recorded")
+                        .padding(10)
+                        .background(Color.white)
+                        .cornerRadius(10)
+                        .multilineTextAlignment(.leading)
+                        .accessibilityIdentifier("event_log")
+                        .padding(.top, 20)
                 }
         }
     }

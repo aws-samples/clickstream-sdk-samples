@@ -75,7 +75,7 @@ struct CheckOutView: View {
                             .padding()
                             .background(Color.secondaryBackground)
                             .cornerRadius(18)
-                    }.padding()
+                    }.padding().accessibilityIdentifier("purchase")
                 }.foregroundColor(.darkText)
                 Spacer()
             }.cornerRadius(12)

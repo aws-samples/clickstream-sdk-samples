@@ -75,6 +75,7 @@ struct ProductView: View {
                                 Text("Add to cart").bold()
                             }
                         }.buttonStyle(AddCartButtonStyle())
+                            .accessibilityIdentifier("add_to_cart")
                     }
                 }.edgesIgnoringSafeArea(.bottom)
                 Spacer()

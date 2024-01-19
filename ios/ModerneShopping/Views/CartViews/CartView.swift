@@ -41,7 +41,10 @@ struct CartView: View {
                 }
                 Text("Total: \(cartProducts.totalPrice.format(f: ".2"))$")
                 Button(action: {
-                    ClickstreamAnalytics.recordEvent("check_out_click")
+                    let attribute: ClickstreamAttribute = [
+                        "totalPrice": cartProducts.totalPrice.format(f: ".2")
+                    ]
+                    ClickstreamAnalytics.recordEvent("check_out_click", attribute)
                     AppDelegate.addEvent()
                     withAnimation { cartProducts.showShowcaseSheet.toggle()
                     }
@@ -56,6 +59,7 @@ struct CartView: View {
                 .cornerRadius(12)
                 .padding()
                 .disabled(cartProducts.cartProductDic.isEmpty)
+                .accessibilityIdentifier("check_out")
             }.onChange(of: cartProducts.cartProductDic, perform: { _ in
                 cartProducts.calculateTotalPrice()
             })

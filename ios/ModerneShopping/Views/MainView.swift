@@ -20,6 +20,7 @@ struct MainView: View {
                 .tabItem {
                     Image(systemName: "house")
                     Text("Home")
+                        .accessibilityIdentifier("Home")
                 }.onAppear {
                     let attribute: ClickstreamAttribute = [
                         "tab_name": "home_tab"
@@ -32,6 +33,7 @@ struct MainView: View {
                 .tabItem {
                     Image(systemName: "cart")
                     Text("Cart")
+                        .accessibilityIdentifier("Cart")
                 }.onAppear {
                     let attribute: ClickstreamAttribute = [
                         "tab_name": "cart_tab"
@@ -44,6 +46,7 @@ struct MainView: View {
                 .tabItem {
                     Image(systemName: "person")
                     Text("Profile")
+                        .accessibilityIdentifier("Profile")
                 }.onAppear {
                     let attribute: ClickstreamAttribute = [
                         "tab_name": "profile_tab"
