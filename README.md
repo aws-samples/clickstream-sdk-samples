@@ -45,6 +45,9 @@ You can refer this [PR](https://github.com/aws-samples/clickstream-sdk-samples/p
 
 License: [Apache-2.0](https://github.com/funnyzak/react-native-v2ex/blob/dev/LICENSE)
 
+## Web SDK Example
+It's a Vue2.x and Express.JS application. See [it](./web/README.md) for more details.
+
 ## Security
 
 See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
