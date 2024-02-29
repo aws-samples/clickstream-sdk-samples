@@ -57,7 +57,14 @@ fun ProductDetailsScreen(
     viewModel: WishlistViewModel = hiltViewModel(),
 ) {
     val inWishlist = viewModel.inWishlist(product.id).observeAsState().value != null
-
+    LaunchedEffect(key1 = true, block = {
+        val event = ClickstreamEvent.builder()
+            .name(ClickstreamAnalytics.Event.SCREEN_VIEW)
+            .add(ClickstreamAnalytics.Attr.SCREEN_NAME, "ProductDetailsScreen")
+            .add(ClickstreamAnalytics.Attr.SCREEN_UNIQUE_ID, this.hashCode())
+            .build()
+        ClickstreamAnalytics.recordEvent(event)
+    })
     Scaffold(
         backgroundColor = Color.White,
         topBar = {

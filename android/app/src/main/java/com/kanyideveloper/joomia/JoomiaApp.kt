@@ -21,6 +21,7 @@ class JoomiaApp : Application() {
             ClickstreamAnalytics.init(applicationContext)
             ClickstreamAnalytics.getClickStreamConfiguration()
                 .withLogEvents(true)
+                .withTrackScreenViewEvents(false)
             Timber.i("MyApp", "Initialized ClickstreamAnalytics")
         } catch (error: AmplifyException) {
             Timber.e("MyApp", "Could not initialize ClickstreamAnalytics", error)
