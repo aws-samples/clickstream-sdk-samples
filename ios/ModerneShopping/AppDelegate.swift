@@ -16,6 +16,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             try ClickstreamAnalytics.initSDK()
             let configuration = try ClickstreamAnalytics.getClickstreamConfiguration()
             configuration.isLogEvents = true
+            configuration.isTrackScreenViewEvents = false
         } catch {
             print("Failed to initialize ClickstreamAnalytics with \(error)")
         }
