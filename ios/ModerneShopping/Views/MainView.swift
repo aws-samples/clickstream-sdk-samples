@@ -15,8 +15,9 @@ struct MainView: View {
     @StateObject var cartItems = CartViewModel()
     @StateObject var user = UserViewModel()
     var body: some View {
+        let homeView = HomeView(productsList: products, user: user).environmentObject(cartItems)
         TabView {
-            HomeView(productsList: products, user: user).environmentObject(cartItems)
+            homeView
                 .tabItem {
                     Image(systemName: "house")
                     Text("Home")
@@ -26,6 +27,10 @@ struct MainView: View {
                         "tab_name": "home_tab"
                     ]
                     ClickstreamAnalytics.recordEvent("view_home", attribute)
+                    ClickstreamAnalytics.recordEvent(ClickstreamAnalytics.EventName.SCREEN_VIEW, [
+                        ClickstreamAnalytics.Attr.SCREEN_NAME: "HomeView",
+                        ClickstreamAnalytics.Attr.SCREEN_UNIQUE_ID: "homeViewId"
+                    ])
                     AppDelegate.addEvent()
                 }
             CartView(cartProducts: cartItems)
@@ -39,6 +44,10 @@ struct MainView: View {
                         "tab_name": "cart_tab"
                     ]
                     ClickstreamAnalytics.recordEvent("view_cart", attribute)
+                    ClickstreamAnalytics.recordEvent(ClickstreamAnalytics.EventName.SCREEN_VIEW, [
+                        ClickstreamAnalytics.Attr.SCREEN_NAME: "CartView",
+                        ClickstreamAnalytics.Attr.SCREEN_UNIQUE_ID: "cartViewId"
+                    ])
                     AppDelegate.addEvent()
                 }
             ProfilView()
