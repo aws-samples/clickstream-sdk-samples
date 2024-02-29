@@ -84,6 +84,12 @@ fun HomeScreen(
     val productsState = viewModel.productsState.value
     val categories = viewModel.categoriesState.value
     LaunchedEffect(key1 = true, block = {
+        val event = ClickstreamEvent.builder()
+            .name(ClickstreamAnalytics.Event.SCREEN_VIEW)
+            .add(ClickstreamAnalytics.Attr.SCREEN_NAME, "HomeScreen")
+            .add(ClickstreamAnalytics.Attr.SCREEN_UNIQUE_ID, this.hashCode())
+            .build()
+        ClickstreamAnalytics.recordEvent(event)
         ClickstreamAnalytics.recordEvent("view_home")
         viewModel.getProfile()
     })

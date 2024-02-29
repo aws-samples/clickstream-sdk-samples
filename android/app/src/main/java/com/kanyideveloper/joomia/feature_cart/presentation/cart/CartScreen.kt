@@ -51,6 +51,12 @@ fun CartScreen(
 
     LaunchedEffect(key1 = true) {
         ClickstreamAnalytics.recordEvent("view_cart")
+        val event = ClickstreamEvent.builder()
+            .name(ClickstreamAnalytics.Event.SCREEN_VIEW)
+            .add(ClickstreamAnalytics.Attr.SCREEN_NAME, "CartScreen")
+            .add(ClickstreamAnalytics.Attr.SCREEN_UNIQUE_ID, this.hashCode())
+            .build()
+        ClickstreamAnalytics.recordEvent(event)
         viewModel.eventFlow.collectLatest { event ->
             when (event) {
                 is UiEvents.SnackbarEvent -> {

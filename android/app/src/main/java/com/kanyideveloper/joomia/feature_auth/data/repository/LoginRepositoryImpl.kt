@@ -26,7 +26,7 @@ class LoginRepositoryImpl(
                 val gender = if (Random.nextBoolean()) "women" else "men"
                 it.avatar = avatarUrl + gender + "/" + Random.nextInt(0, 99) + ".jpg"
                 dataPreferences.saveUserdata(it)
-                ClickstreamAnalytics.setUserId(it.id.toString())
+                ClickstreamAnalytics.setUserId(it.id.toString()+it.hashCode())
                 val userAttribute = ClickstreamUserAttribute.builder()
                     .add("user_name", it.name.firstname + " " + it.name.lastname)
                     .add("email", it.email)

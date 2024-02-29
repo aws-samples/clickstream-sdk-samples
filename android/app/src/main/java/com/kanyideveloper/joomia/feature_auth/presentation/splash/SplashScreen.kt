@@ -25,6 +25,8 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
+import software.aws.solution.clickstream.ClickstreamAnalytics
+import software.aws.solution.clickstream.ClickstreamEvent
 
 @Destination(start = true)
 @Composable
@@ -46,6 +48,12 @@ fun SplashScreen(
         }
 
         LaunchedEffect(key1 = true) {
+            val event = ClickstreamEvent.builder()
+                .name(ClickstreamAnalytics.Event.SCREEN_VIEW)
+                .add(ClickstreamAnalytics.Attr.SCREEN_NAME, "SplashScreen")
+                .add(ClickstreamAnalytics.Attr.SCREEN_UNIQUE_ID, this.hashCode())
+                .build()
+            ClickstreamAnalytics.recordEvent(event)
             withContext(Dispatchers.Main) {
                 scale.animateTo(
                     targetValue = 1.0f,

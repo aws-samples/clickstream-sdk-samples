@@ -9,6 +9,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -26,12 +27,22 @@ import com.kanyideveloper.joomia.core.presentation.ui.theme.poppins
 import com.kanyideveloper.joomia.destinations.LoginScreenDestination
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
+import software.aws.solution.clickstream.ClickstreamAnalytics
+import software.aws.solution.clickstream.ClickstreamEvent
 
 @Destination
 @Composable
 fun RegisterScreen(
     navigator: DestinationsNavigator,
 ) {
+    LaunchedEffect(key1 =true, block = {
+        val event = ClickstreamEvent.builder()
+            .name(ClickstreamAnalytics.Event.SCREEN_VIEW)
+            .add(ClickstreamAnalytics.Attr.SCREEN_NAME, "RegisterScreen")
+            .add(ClickstreamAnalytics.Attr.SCREEN_UNIQUE_ID, this.hashCode())
+            .build()
+        ClickstreamAnalytics.recordEvent(event)
+    })
     Scaffold(
         topBar = {
             Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.Top) {

@@ -38,6 +38,7 @@ import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlinx.coroutines.flow.collectLatest
 import software.aws.solution.clickstream.ClickstreamAnalytics
+import software.aws.solution.clickstream.ClickstreamEvent
 
 @Destination
 @Composable
@@ -51,6 +52,12 @@ fun WishlistScreen(
 
     LaunchedEffect(key1 = true) {
         ClickstreamAnalytics.recordEvent("view_wishlist")
+        val event = ClickstreamEvent.builder()
+            .name(ClickstreamAnalytics.Event.SCREEN_VIEW)
+            .add(ClickstreamAnalytics.Attr.SCREEN_NAME, "WishlistScreen")
+            .add(ClickstreamAnalytics.Attr.SCREEN_UNIQUE_ID, this.hashCode())
+            .build()
+        ClickstreamAnalytics.recordEvent(event)
         viewModel.eventFlow.collectLatest { event ->
             when (event) {
                 is UiEvents.SnackbarEvent -> {
