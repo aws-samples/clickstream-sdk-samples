@@ -20,6 +20,13 @@
     if (error) {
         NSLog(@"Fail to initialize ClickstreamAnalytics: %@", error.localizedDescription);
     }
+    ClickstreamConfiguration *configuration = [[[[[[[ClickstreamConfiguration alloc] init]
+                                               withAppId:@"your appId"]
+                                               withEndpoint:@"https://example.com/collect"]
+                                               withCompressEvents:NO]
+                                               withSendEventInterval:5000]
+                                               withLogEvents:TRUE];
+    [ClickstreamObjc initSDK:configuration error: &error];
     
     /// Record an event with item
     NSDictionary *attributes = @{
@@ -33,7 +40,13 @@
         ClickstreamItemKey.PRICE: @99.9,
         @"book_publisher": @"Nature Research"
     };
-    [ClickstreamObjc recordEvent:@"view_item" :attributes: @[item_book]];
+    [ClickstreamObjc recordEvent:@"view_item" :attributes: @[item_book] ];
+    
+    NSDictionary *screen_attributes = @{
+        Attr.SCREEN_NAME: @"HomeView",
+        Attr.SCREEN_UNIQUE_ID: @"your screen uniqueId"
+    };
+    [ClickstreamObjc recordEvent:EventName.SCREEN_VIEW :screen_attributes];
 };
 @end
 
