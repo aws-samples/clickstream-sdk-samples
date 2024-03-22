@@ -13,10 +13,13 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         AppDelegate.allEventNumber = UserDefaults.standard.integer(forKey: "allEventNumber")
         /// Initialize Clickstream SDK
         do {
-            try ClickstreamAnalytics.initSDK()
-            let configuration = try ClickstreamAnalytics.getClickstreamConfiguration()
-            configuration.isLogEvents = true
-            configuration.isTrackScreenViewEvents = false
+            let configuration = ClickstreamConfiguration()
+                .withLogEvents(true)
+                .withGlobalAttributes([
+                    "channel": "test",
+                    "isOpenNotification": true,
+                ])
+            try ClickstreamAnalytics.initSDK(configuration)
         } catch {
             print("Failed to initialize ClickstreamAnalytics with \(error)")
         }
