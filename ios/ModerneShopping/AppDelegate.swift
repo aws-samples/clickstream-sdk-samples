@@ -15,7 +15,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         do {
             let configuration = ClickstreamConfiguration()
                 .withLogEvents(true)
-                .withGlobalAttributes([
+                .withInitialGlobalAttributes([
                     "channel": "test",
                     "isOpenNotification": true,
                 ])
