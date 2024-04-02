@@ -1,4 +1,4 @@
-name: Build for React Native
+name: Build for Web
 
 on:
   push:
