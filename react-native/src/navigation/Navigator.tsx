@@ -38,6 +38,8 @@ import SplashScreen from 'react-native-splash-screen'
 import '../components/actions-sheet'
 import NavigationService from './NavigationService'
 import { CommonScreenProps, RootStackParamList, ROUTES } from './routes'
+import { ClickstreamAnalytics } from 'clickstream-react-native'
+
 /**
  * dayjs
  */
@@ -339,6 +341,29 @@ const MainAppNavigator = () => {
 }
 const StackNavigator = createNativeStackNavigator<RootStackParamList>()
 export const AppNavigationContainer = () => {
+  let mNavigationRef: NavigationContainerRefWithCurrent<RootStackParamList>
+  let currentScreenName = ''
+  const recordScreenView = (name: string) => {
+    ClickstreamAnalytics.record({
+      name: ClickstreamAnalytics.Event.SCREEN_VIEW,
+      attributes: {
+        [ClickstreamAnalytics.Attr.SCREEN_NAME]: name
+      }
+    })
+    console.log('Recorded screen view: ' + name)
+  }
+  const onReady = () => {
+    recordScreenView('Hot')
+  }
+
+  const onStateChange = () => {
+    const routeName = mNavigationRef?.getCurrentRoute()?.name
+    if (routeName && currentScreenName !== routeName) {
+      recordScreenView(routeName)
+      currentScreenName = routeName
+    }
+  }
+
   const { token } = useAppSelector((state: RootState) => state.member)
   const {
     login: { tokenGeneratedLink }
@@ -365,7 +390,10 @@ export const AppNavigationContainer = () => {
           <NavigationContainer
             ref={(navigatorRef: NavigationContainerRefWithCurrent<RootStackParamList>) => {
               NavigationService.setTopLevelNavigator(navigatorRef)
+              mNavigationRef = navigatorRef
             }}
+            onReady={onReady}
+            onStateChange={onStateChange}
             theme={{
               dark: theme.name === 'dark',
               colors: {

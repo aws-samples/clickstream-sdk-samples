@@ -58,6 +58,7 @@
     "@react-navigation/native-stack": "^6.9.8",
     "@redux-devtools/extension": "^3.2.2",
     "@types/react": "^18",
+    "clickstream-react-native": "./clickstream-react-native-0.0.2.tgz",
     "dayjs": "^1.11.7",
     "i18n-js": "^3.8.0",
     "lodash": "^4.17.21",

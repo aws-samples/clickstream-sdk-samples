@@ -1,7 +1,7 @@
 require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-platform :ios, min_ios_version_supported
+platform :ios, 13
 prepare_react_native_project!
 
 # https://github.com/facebook/react-native/pull/36759
@@ -12,7 +12,7 @@ def __apply_Xcode_14_3_RC_post_install_workaround(installer)
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
       current_target = config.build_settings['IPHONEOS_DEPLOYMENT_TARGET']
-      minimum_target = min_ios_version_supported
+      minimum_target = 13
       if current_target.to_f < minimum_target.to_f
         config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = minimum_target
       end

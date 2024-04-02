@@ -3595,6 +3595,10 @@ cli-width@^3.0.0:
   resolved "https://registry.npmmirror.com/cli-width/-/cli-width-3.0.0.tgz#a2f48437a2caa9a22436e794bf071ec9e61cedf6"
   integrity sha512-FxqpkPPwu1HjuN93Omfm4h8uIanXofW0RxVEW3k5RKx+mJJYSthzNhp32Kzxxy3YAEZ/Dc/EWN1vZRY0+kOhbw==
 
+clickstream-react-native@./clickstream-react-native-0.0.2.tgz:
+  version "0.0.2"
+  resolved "./clickstream-react-native-0.0.2.tgz#0f700a2a1b37dcca7a3ec1cc9223a2caca49ddc1"
+
 cliui@^6.0.0:
   version "6.0.0"
   resolved "https://registry.npmmirror.com/cliui/-/cliui-6.0.0.tgz#511d702c0c4e41ca156d7d0e96021f23e13225b1"

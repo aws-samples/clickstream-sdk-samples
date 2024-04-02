@@ -11,11 +11,11 @@ import { SylCommon, useTheme } from '@src/theme'
 import { IState, AppObject } from '@src/types'
 import { linking } from '@src/utils'
 import React, { useEffect } from 'react'
-import { NativeModules, ScrollView } from 'react-native'
+import { ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import { Footer, HeaderButton, ProfileCard, SetStatusBar, TableList, TableRow } from '../components'
+import { ClickstreamAnalytics } from 'clickstream-react-native'
 
-const { ClickstreamAnalytics } = NativeModules
 const My = ({
   navigation,
   app,
@@ -51,16 +51,19 @@ const My = ({
             text={translate('common.more')}
             onPress={() => {
               console.log('click_user_more')
-              ClickstreamAnalytics.recordEvent('button_click', {
-                location: 'user_more',
-                profile_url: profile?.url
+              ClickstreamAnalytics.record({
+                name: 'button_click',
+                attributes: {
+                  location: 'user_more',
+                  profile_url: profile?.url
+                }
               })
 
-              ClickstreamAnalytics.addGlobalAttributes({
+              ClickstreamAnalytics.setGlobalAttributes({
                 user_name: 'test_username',
                 test_global_attribute: 'test_global_attribute_value'
               })
-              ClickstreamAnalytics.deleteGlobalAttributes(['test_global_attribute', 'location'])
+              ClickstreamAnalytics.deleteGlobalAttributes(['test_global_attribute'])
               ClickstreamAnalytics.disable()
               ClickstreamAnalytics.enable()
               navigation.navigate(ROUTES.WebViewer, { url: profile?.url })
