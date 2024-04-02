@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Run build
+      - name: Run lint
         run: |
           cd react-native
           yarn
@@ -28,7 +28,9 @@ jobs:
           cache: gradle
       - name: Build android apk
         run: |
-          cd react-native/android
+          cd react-native
+          yarn
+          cd android
           ./gradlew assembleDebug
 
   build-ios:
@@ -38,7 +40,9 @@ jobs:
       - name: Build ios
         run: |
           sudo xcode-select -s '/Applications/Xcode_15.2.app/Contents/Developer'
-          cd react-native/ios
+          cd react-native
+          yarn
+          cd ios
           xcodebuild -resolvePackageDependencies
           echo "start build ios app"
           xcodebuild -workspace app.xcworkspace \
