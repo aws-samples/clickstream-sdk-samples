@@ -41,6 +41,6 @@ jobs:
         run: |
           cd react-native
           yarn
-          cd ios
+          cd ios && pod install
           echo "start build ios app"
           xcodebuild -scheme "app" -sdk iphoneos -configuration Release -destination generic/platform=iOS CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
