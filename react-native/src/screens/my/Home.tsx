@@ -14,7 +14,7 @@ import React, { useEffect } from 'react'
 import { ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import { Footer, HeaderButton, ProfileCard, SetStatusBar, TableList, TableRow } from '../components'
-import { ClickstreamAnalytics } from 'clickstream-react-native'
+import { ClickstreamAnalytics } from '@aws/clickstream-react-native'
 
 const My = ({
   navigation,

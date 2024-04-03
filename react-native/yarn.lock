@@ -15,6 +15,10 @@
     "@jridgewell/gen-mapping" "^0.3.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
+"@aws/clickstream-react-native@./aws-clickstream-react-native-0.0.1.tgz":
+  version "0.0.1"
+  resolved "./aws-clickstream-react-native-0.0.1.tgz#6596e818bd607bc3967a5bf4731a6c4ff512aa94"
+
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.12.13", "@babel/code-frame@^7.22.13", "@babel/code-frame@^7.22.5", "@babel/code-frame@^7.23.5":
   version "7.23.5"
   resolved "https://registry.npmmirror.com/@babel/code-frame/-/code-frame-7.23.5.tgz#9009b69a8c602293476ad598ff53e4562e15c244"
@@ -3594,10 +3598,6 @@ cli-width@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npmmirror.com/cli-width/-/cli-width-3.0.0.tgz#a2f48437a2caa9a22436e794bf071ec9e61cedf6"
   integrity sha512-FxqpkPPwu1HjuN93Omfm4h8uIanXofW0RxVEW3k5RKx+mJJYSthzNhp32Kzxxy3YAEZ/Dc/EWN1vZRY0+kOhbw==
-
-clickstream-react-native@./clickstream-react-native-0.0.2.tgz:
-  version "0.0.2"
-  resolved "./clickstream-react-native-0.0.2.tgz#0f700a2a1b37dcca7a3ec1cc9223a2caca49ddc1"
 
 cliui@^6.0.0:
   version "6.0.0"

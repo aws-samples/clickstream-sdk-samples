@@ -1,7 +1,7 @@
 import { AppRegistry, LogBox } from 'react-native'
 import App from './src/App'
 import { name as appName } from './app.json'
-import { ClickstreamAnalytics } from 'clickstream-react-native'
+import { ClickstreamAnalytics } from '@aws/clickstream-react-native'
 
 // Ignore log notification by message:
 LogBox.ignoreLogs(['required dispatch_sync', 'flexWrap'])

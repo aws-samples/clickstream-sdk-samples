@@ -38,7 +38,7 @@ import SplashScreen from 'react-native-splash-screen'
 import '../components/actions-sheet'
 import NavigationService from './NavigationService'
 import { CommonScreenProps, RootStackParamList, ROUTES } from './routes'
-import { ClickstreamAnalytics } from 'clickstream-react-native'
+import { ClickstreamAnalytics } from '@aws/clickstream-react-native'
 
 /**
  * dayjs

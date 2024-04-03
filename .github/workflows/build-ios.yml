@@ -18,4 +18,4 @@ jobs:
           cd ios
           xcodebuild -resolvePackageDependencies
           echo "start build ios app"
-          xcodebuild -scheme "ModerneShopping" -sdk iphoneos -configuration Release -destination generic/platform=iOS clean archive | xcpretty
+          xcodebuild -scheme "ModerneShopping" -sdk iphoneos -configuration Release -destination generic/platform=iOS

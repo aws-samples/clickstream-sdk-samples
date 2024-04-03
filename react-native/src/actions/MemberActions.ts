@@ -28,7 +28,7 @@ import {
   AppObject
 } from '../types'
 import { cacheMemberFollowing, cacheMemberInterestNodes, cacheMemberLikeTopicss } from './CacheAction'
-import { ClickstreamAnalytics } from 'clickstream-react-native'
+import { ClickstreamAnalytics } from '@aws/clickstream-react-native'
 
 export const myProfile = () => async (dispatch: Dispatch, getState: () => RootState) => {
   const _member = await ApiLib.member.myProfile()
