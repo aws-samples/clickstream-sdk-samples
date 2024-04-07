@@ -15,10 +15,10 @@
     "@jridgewell/gen-mapping" "^0.3.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
-"@aws/clickstream-react-native@0.1.0":
-  version "0.1.0"
-  resolved "https://registry.npmjs.org/@aws/clickstream-react-native/-/clickstream-react-native-0.1.0.tgz#2dbbb71830af55a54b46d313952de53d59a551c2"
-  integrity sha512-rRQn+FY7x1lo4Zsw6V3tXTE78xBUB6yoQhNMDsucpJVQneIOJd+lPND8MCrhOtLgFzHvf4C8G5S6hFl77AuIdg==
+"@aws/clickstream-react-native@0.1.1":
+  version "0.1.1"
+  resolved "https://registry.npmjs.org/@aws/clickstream-react-native/-/clickstream-react-native-0.1.1.tgz#227daaba2bebbbd8cef79efe1b3ed689420ee703"
+  integrity sha512-FWOgDh/vf0eOVVeBbzRjrcvwBq3mwieBtMw5efZeU1VrUEw63lvgixT2vufc2cNW/rLpSnwCVIM+dehJAIR4vg==
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.12.13", "@babel/code-frame@^7.22.13", "@babel/code-frame@^7.22.5", "@babel/code-frame@^7.23.5":
   version "7.23.5"
