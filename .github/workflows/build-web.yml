@@ -1,0 +1,19 @@
+name: Build for Web
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run build
+        run: |
+          cd web
+          yarn
+          cd packages/vue2
+          yarn build

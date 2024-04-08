@@ -38,10 +38,15 @@ More references:
 
 License: [MIT](https://github.com/Djallil14/SwiftUI-FakeShopping-App/blob/main/LICENSE.md)
 
-## React-Native Example
+## React Native SDK Example
 React-Native example app **v2ex** is forked from https://github.com/funnyzak/react-native-v2ex. To get started with the React-Native example, refer to the [React-Native Example README](react-native/README.md).
 
-You can refer this [PR](https://github.com/aws-samples/clickstream-sdk-samples/pull/8/files) to learn how to integrate Clickstream Android and Swift SDK into react-native app.
+Please refer this [PR](https://github.com/aws-samples/clickstream-sdk-samples/pull/25/files#diff-92545e618a4ce920ced0c68cb0dd77f476ad4613261b41b57e3d41e8ab84a4e8R12-R19) to learn how to integrate Clickstream React Native SDK into your app.
+
+You can also refer this [PR](https://github.com/aws-samples/clickstream-sdk-samples/pull/8/files) to learn how to manually integrate Clickstream Android and Swift SDK into react native app.
+
+### Record screen views when using React Navigation
+Here's an [example](https://github.com/aws-samples/clickstream-sdk-samples/pull/25/files#diff-96a74db413b2f02988e5537fdbdf4f307334e8f5ef3a9999df7de3c6785af75bR344-R397) of globally logging React Native screen view events when using React Navigation 6.x:
 
 License: [Apache-2.0](https://github.com/funnyzak/react-native-v2ex/blob/dev/LICENSE)
 
