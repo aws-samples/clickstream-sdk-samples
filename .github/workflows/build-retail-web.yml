@@ -1,4 +1,4 @@
-name: Build for Web
+name: Build for Retail Web
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build-web:
+  build-retail-web:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
