@@ -14,7 +14,6 @@ export default {
 
   getOrderByName(name) {
     let allOrders = localStorage.getItem("allOrders")
-    console.log("allorder",allOrders)
     if (allOrders) {
       return JSON.parse(allOrders)[name] ?? []
     } else {
