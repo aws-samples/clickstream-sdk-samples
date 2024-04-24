@@ -1,0 +1,19 @@
+name: Build for Retail Web
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-retail-web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run build
+        run: |
+          cd retail-web
+          npm i
+          npm run lint
+          npm run build
