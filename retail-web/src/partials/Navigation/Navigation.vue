@@ -1,5 +1,5 @@
 <template>
-  <nav class="navigation fixed-top pt-2 pb-3 p-lg-1">
+  <nav class="navigation fixed-top pt-2 pb-2 p-lg-1">
     <div class="nav-contents container d-lg-flex align-items-center">
       <HomeLink class="logo"></HomeLink>
       <ShopDropdown class="shop mx-lg-2"></ShopDropdown>
@@ -45,7 +45,7 @@ export default {
 
 .logo {
   grid-area: Logo;
-  width: 80px;
+  width: 40px;
 }
 
 .shop {

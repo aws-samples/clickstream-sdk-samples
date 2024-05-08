@@ -99,7 +99,7 @@ export default {
     if (allProducts.length > 0) {
       return categoryProducts
     } else {
-      let response = await fetch('../../public/data/products.yaml')
+      let response = await fetch('/data/products.yaml')
       allProducts = yaml.parse(await response.text());
       for (let i = 0; i < allProducts.length; i++) {
         if (categoryProducts[allProducts[i].category] === undefined) {

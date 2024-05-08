@@ -13,7 +13,9 @@ import {getAnalytics} from 'firebase/analytics';
 import {AnalyticsLogger} from "@/analytics/AnalyticsLogger";
 
 if (import.meta.env.VITE_CLICKSTREAM_APPID !== ""
-  && import.meta.env.VITE_CLICKSTREAM_ENDPOINT !== "") {
+						&& import.meta.env.VITE_CLICKSTREAM_APPID !== undefined
+						&& import.meta.env.VITE_CLICKSTREAM_ENDPOINT !== ""
+						&& import.meta.env.VITE_CLICKSTREAM_ENDPOINT !== undefined ) {
   localStorage.setItem("clickstream_appId", import.meta.env.VITE_CLICKSTREAM_APPID)
   localStorage.setItem("clickstream_endpoint", import.meta.env.VITE_CLICKSTREAM_ENDPOINT)
 }

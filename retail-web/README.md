@@ -43,3 +43,10 @@ If you follow [Deployment Instructions](https://github.com/aws-samples/retail-de
    VITE_USE_LOCAL_DATA=false
    ```
 Then you can execute `npm run dev` to preview retail website with your own API.
+
+## Deploy as static website
+Run the following command to deploy this website to your Amazon S3 bucket as a static website.
+
+```bash
+./deploy.sh s3_bucket_name cloudfront_dist_id
+```

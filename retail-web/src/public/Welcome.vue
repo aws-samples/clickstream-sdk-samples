@@ -1,17 +1,14 @@
 <template>
   <Layout :showNav="false" :showFooter="false" :showTextAlerts="false" :showDemoGuide="false" backgroundColor="var(--aws-squid-ink)">
     <div class="container mb-2 text-left">
-      <h1 class="heading my-5 text-center">Welcome to the Retail Demo Store!</h1>
+      <h2 class="heading my-5 text-center">Welcome to the Retail Demo Store!</h2>
 
       <p>
-        The Retail Demo Store is a demo platform to demonstrate how AWS infrastructure and services can be used to build
-        personalized customer experiences across multiple channels of engagement.
+        Welcome to our retail demo store! Browse products, add to cart, and checkout effortlessly.
       </p>
 
       <p>
-        The Retail Demo Store mimics an online store with products, users and user-interactions to showcase the
-        personalized product recommendations a shopper would receive based on historical and real time click-through
-        behavior.
+        You can also easily configure Clickstream Web SDK to send data to your ingestion server.
       </p>
 
       <div class="mt-2 d-flex flex-column flex-lg-row align-items-lg-center">
