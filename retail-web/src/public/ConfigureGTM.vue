@@ -2,14 +2,12 @@
   <Layout :showNav="false" :showFooter="false" :showTextAlerts="false" :showDemoGuide="false"
           backgroundColor="var(--aws-squid-ink)">
     <div class="container mb-2 text-left">
-      <h3 class="heading my-5 text-center">Configure SensorData Web SDK</h3>
-      <span>Please fill your appId and endpoint<br>Note: Your pipeline should use third-party SDK and enable SensorDataTransformer</span>
+      <h3 class="heading my-5 text-center">Configure Google Tag Manager</h3>
+      <span>Please fill your Google Tag Manager ID</span>
+
       <div class="mt-2 mb-4 my-sm-5 custom-mt d-flex flex-column align-items-sm-end">
         <div class="input-field input-group">
-          <input placeholder="appId" type="text" class="form-control" v-model="appId" @input="inputChanged">
-        </div>
-        <div class="input-field input-group">
-          <input placeholder="endpoint" type="text" class="form-control" v-model="endpoint" @input="inputChanged">
+          <input placeholder="GTM-XXXXXXXX" type="text" class="form-control" v-model="gtmId" @input="inputChanged">
         </div>
         <div class="d-flex flex-column flex-sm-row ">
           <button class="mt-3 mt-sm-0 btn btn-primary"
@@ -25,51 +23,34 @@
 
 <script>
 import Layout from '@/components/Layout/Layout.vue'
-import swal from "sweetalert";
-import sensors from 'sa-sdk-javascript'
+import swal from 'sweetalert'
 
 export default {
   name: 'Configure',
   components: {
     Layout,
   },
-  data() {
+  data () {
     return {
-      appId: '',
-      endpoint: '',
+      gtmId: '',
       isSubmitEnable: false,
-    };
+    }
   },
-  async created() {
-    this.appId = localStorage.getItem("sensor_appId")
-    this.endpoint = localStorage.getItem("sensor_endpoint")
+  async created () {
+    this.gtmId = localStorage.getItem('gtmId')
     this.inputChanged()
   },
   methods: {
-    inputChanged() {
-      this.isSubmitEnable = this.appId.length > 0 && this.endpoint.length > 0;
+    inputChanged () {
+      this.isSubmitEnable = this.gtmId && this.gtmId.length > 0
     },
-    async submit() {
+    async submit () {
       if (!this.isSubmitEnable) return
       // config SDK
-      localStorage.setItem("sensor_appId", this.appId)
-      localStorage.setItem("sensor_endpoint", this.endpoint)
-
-      sensors.init({
-        server_url: this.endpoint + '?appId=' + this.appId + '&platform=Web&testBy=webRetailDemo',
-        show_log: true,
-        is_track_single_page: true,
-        use_client_time: true,
-        send_type: 'beacon',
-        heatmap: {
-          clickmap: 'default',
-          scroll_notice_map: 'default'
-        }
-      });
-      sensors.quick('autoTrack');
+      localStorage.setItem('gtmId', this.gtmId)
       this.renderSubmitConfirmation()
     },
-    renderSubmitConfirmation() {
+    renderSubmitConfirmation () {
       swal({
         title: 'Configure Success',
         icon: 'success',
@@ -79,12 +60,14 @@ export default {
       }).then((value) => {
         switch (value) {
           case 'startShopping':
-            this.$router.push('/');
+            this.$router.push('/').then(() => {
+              window.location.reload();
+            });
         }
-      });
+      })
     },
-  }
-};
+  },
+}
 </script>
 
 <style scoped>

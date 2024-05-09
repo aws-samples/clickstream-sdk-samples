@@ -7,12 +7,10 @@
 
       <div class="mt-2 mb-4 my-sm-5 custom-mt d-flex flex-column align-items-sm-end">
         <div class="input-field input-group">
-          <label>AppId</label>
-          <input type="text" class="form-control" v-model="appId" @input="inputChanged">
+          <input placeholder="appId" type="text" class="form-control" v-model="appId" @input="inputChanged">
         </div>
         <div class="input-field input-group">
-          <label>Endpoint</label>
-          <input type="text" class="form-control" v-model="endpoint" @input="inputChanged">
+          <input placeholder="endpoint" type="text" class="form-control" v-model="endpoint" @input="inputChanged">
         </div>
         <div class="d-flex flex-column flex-sm-row ">
           <button class="mt-3 mt-sm-0 btn btn-primary"
@@ -58,7 +56,7 @@ export default {
       localStorage.setItem("clickstream_appId", this.appId)
       localStorage.setItem("clickstream_endpoint", this.endpoint)
       ClickstreamAnalytics.init({
-        appId: this.appId,
+        gtmId: this.appId,
         endpoint: this.endpoint,
         isLogEvents: true,
         sendMode: SendMode.Batch,

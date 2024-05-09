@@ -14,6 +14,7 @@
     <div class="dropdown-menu" aria-labelledby="categories-dropdown-anchor">
       <router-link class="dropdown-item" :to="`/configure`">Configure Clickstream</router-link>
       <router-link class="dropdown-item" :to="`/configure/sensor`">Configure SensorData</router-link>
+      <router-link class="dropdown-item" :to="`/configure/gtm`">Configure GTM</router-link>
       <hr class="hr-margin"/>
       <router-link class="dropdown-item" :to="`/live`">Live Streams</router-link>
       <hr class="hr-margin"/>

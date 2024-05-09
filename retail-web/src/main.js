@@ -31,7 +31,7 @@ if (import.meta.env.VITE_SENSORDATA_APPID !== ""
 // Initial Clickstream Web SDK
 if (localStorage.getItem("clickstream_appId") !== null) {
   ClickstreamAnalytics.init({
-    appId: localStorage.getItem("clickstream_appId"),
+    gtmId: localStorage.getItem("clickstream_appId"),
     endpoint: localStorage.getItem("clickstream_endpoint"),
     isLogEvents: true,
     sendMode: SendMode.Batch,

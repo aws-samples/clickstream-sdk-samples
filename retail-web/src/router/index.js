@@ -4,7 +4,6 @@
 import {createRouter, createWebHistory} from 'vue-router'
 
 import AmplifyStore from '@/store/store';
-import ConfigureSensorData from '@/public/ConfigureSensorData.vue'
 
 // Load User
 // eslint-disable-next-line
@@ -23,6 +22,8 @@ async function getUser() {
 const Main = () => import('@/public/Main.vue')
 const Welcome = () => import('@/public/Welcome.vue')
 const Configure = () => import('@/public/Configure.vue')
+const ConfigureSensorData = () => import('@/public/ConfigureSensorData.vue')
+const ConfigureGTM = () => import('@/public/ConfigureGTM.vue')
 const ProductDetail = () => import('@/public/ProductDetail.vue')
 const CategoryDetail = () => import('@/public/CategoryDetail.vue')
 const Live = () => import('@/public/Live.vue')
@@ -51,6 +52,12 @@ const router = createRouter({
       path: '/configure/sensor',
       name: 'ConfigureSensorData',
       component: ConfigureSensorData,
+      meta: {requiresAuth: false},
+    },
+    {
+      path: '/configure/gtm',
+      name: 'ConfigureGTM',
+      component: ConfigureGTM,
       meta: {requiresAuth: false},
     },
     {
