@@ -4,6 +4,7 @@
 import {createRouter, createWebHistory} from 'vue-router'
 
 import AmplifyStore from '@/store/store';
+import ConfigureSensorData from '@/public/ConfigureSensorData.vue'
 
 // Load User
 // eslint-disable-next-line
@@ -44,6 +45,12 @@ const router = createRouter({
       path: '/configure',
       name: 'Configure',
       component: Configure,
+      meta: {requiresAuth: false},
+    },
+    {
+      path: '/configure/sensor',
+      name: 'ConfigureSensorData',
+      component: ConfigureSensorData,
       meta: {requiresAuth: false},
     },
     {
