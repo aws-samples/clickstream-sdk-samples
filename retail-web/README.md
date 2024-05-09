@@ -53,4 +53,4 @@ Run the following command to deploy this website to your Amazon S3 bucket as a s
 
 **s3_bucket_name**: The bucket name which you want to host your website.
 
-**cloudfront_dist_id**: After create distribute in your CloudFront console, your can find the ID in your Distributions list.
+**cloudfront_dist_id**: After create distribution in your CloudFront console, your can find the ID in your Distributions list.
