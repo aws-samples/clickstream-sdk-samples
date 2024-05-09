@@ -140,6 +140,10 @@ export default {
 
 .shopper-detail {
   font-size: 0.6rem;
+  max-width: 170px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .username {
@@ -148,6 +152,7 @@ export default {
 
 @media (min-width: 992px) {
   .shopper-detail {
+    max-width: 260px;
     font-size: 0.8rem;
   }
 }

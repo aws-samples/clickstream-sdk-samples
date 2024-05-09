@@ -172,6 +172,7 @@ export default {
     $route: {
       immediate: true,
       handler() {
+        window.scrollTo({ top: 0 });
         this.fetchData();
         this.isDescriptionPersonalized = false
       },

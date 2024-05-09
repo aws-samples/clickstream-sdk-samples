@@ -2,10 +2,10 @@
   <Layout :showNav="false" :showFooter="false" :showTextAlerts="false" :showDemoGuide="false"
           backgroundColor="var(--aws-squid-ink)">
     <div class="container mb-2 text-left">
-      <h1 class="heading my-5 text-center">Configure Clickstream Web SDK</h1>
+      <h3 class="heading my-5 text-center">Configure Clickstream Web SDK</h3>
       <span>Please fill your appId and endpoint</span>
 
-      <div class="mt-2 mb-4 my-sm-5 d-flex flex-column align-items-center align-items-sm-end">
+      <div class="mt-2 mb-4 my-sm-5 custom-mt d-flex flex-column align-items-sm-end">
         <div class="input-field input-group">
           <label>AppId</label>
           <input type="text" class="form-control" v-model="appId" @input="inputChanged">
@@ -14,8 +14,8 @@
           <label>Endpoint</label>
           <input type="text" class="form-control" v-model="endpoint" @input="inputChanged">
         </div>
-        <div class="d-flex flex-column flex-sm-row align-items-center">
-          <button class=" mt-3 mt-sm-0 btn btn-primary"
+        <div class="d-flex flex-column flex-sm-row ">
+          <button class="mt-3 mt-sm-0 btn btn-primary"
                   :class="{'create-account-disable': !isSubmitEnable, 'create-account': isSubmitEnable}"
                   @click.prevent="submit">Confirm
           </button>
@@ -111,17 +111,27 @@ export default {
   flex: 1;
   display: flex;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
 }
 
 .input-field label {
-  margin-left: 20px;
-  width: 120px;
-  margin-right: 1px;
+  width: 82px;
+  margin-top: 4px;
   color: white;
 }
 
 .input-field input {
   flex-grow: 1;
+}
+
+.input-group > .form-control {
+  border-top-left-radius: .25rem;
+  border-bottom-left-radius: .25rem;
+}
+
+@media screen and (max-width: 576px) {
+  .custom-mt {
+    padding-top: 16px;
+  }
 }
 </style>
