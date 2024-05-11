@@ -1,6 +1,8 @@
 <template>
   <router-link to="/cart" aria-label="cart" class="cart d-flex flex-column align-items-center">
+    <div :style="{ paddingHorizontal: '2px' }" >
     <div class="quantity" ref="quantity">{{ cartQuantity }}</div>
+    </div>
     <CartIcon class="icon"></CartIcon>
   </router-link>
 </template>
@@ -40,7 +42,7 @@ export default {
 
 <style scoped>
 .cart {
-  width: 40px;
+  width: 30px;
 }
 
 .icon {
@@ -55,7 +57,7 @@ export default {
 .quantity {
   /* fine tuning the position so it looks like one icon */
   position: relative;
-  top: 8px;
+  top: 6px;
   left: 2px;
 
   padding: 6px;
@@ -63,7 +65,7 @@ export default {
   place-items: center;
   border-radius: 50%;
   background: var(--grey-600);
-  font-size: 0.78rem;
+  font-size: 0.60rem;
   color: var(--white);
   transition: background 150ms ease-in-out;
 }

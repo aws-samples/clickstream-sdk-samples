@@ -18,6 +18,6 @@ export default {
 <style scoped>
 .badge-img {
   margin-right: 10px;
-  height: 40px;
+  height: 24px;
 }
 </style>

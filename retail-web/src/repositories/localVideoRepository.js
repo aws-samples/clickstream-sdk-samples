@@ -17,7 +17,7 @@ export default {
               "28762499-dd36-4b23-96d3-db3eeeaed548",
               "36ba2aec-a64e-4ac5-911d-a36cbbfa83bf"
             ],
-            "thumb_url": "https://d22w93kkp7ubok.cloudfront.net/images/videos/default_stream0_thumb.png"
+            "thumb_url": "/default_stream0_thumb.png"
           },
           {
             "playback_url": "https://2f185ac93237.us-west-2.playback.live-video.net/api/video/v1/us-west-2.266916629424.channel.Kyr5LYOURnWt.m3u8",
@@ -30,7 +30,7 @@ export default {
               "7cfd10d1-ff92-4513-b688-0ee179deaaef",
               "7a60597a-5a5a-48bc-86bd-f32c818b4008"
             ],
-            "thumb_url": "https://d22w93kkp7ubok.cloudfront.net/images/videos/default_stream1_thumb.png"
+            "thumb_url": "/default_stream1_thumb.png"
           },
           {
             "playback_url": "https://2f185ac93237.us-west-2.playback.live-video.net/api/video/v1/us-west-2.266916629424.channel.8DVlPzmSylNT.m3u8",
@@ -43,7 +43,7 @@ export default {
               "a4ea1f55-4f9e-4efa-ab32-343676b69593",
               "c6d7f153-e5a7-4168-a2f0-7471520e3f00"
             ],
-            "thumb_url": "https://d22w93kkp7ubok.cloudfront.net/images/videos/default_stream2_thumb.png"
+            "thumb_url": "/default_stream2_thumb.png"
           },
           {
             "playback_url": "https://2f185ac93237.us-west-2.playback.live-video.net/api/video/v1/us-west-2.266916629424.channel.kFHQJjo6tk1V.m3u8",
@@ -55,7 +55,7 @@ export default {
               "89728417-5269-403d-baa3-04b59cdffd0a",
               "2f3f075b-66ff-475f-95e3-71b462f328c5"
             ],
-            "thumb_url": "https://d22w93kkp7ubok.cloudfront.net/images/videos/default_stream3_thumb.png"
+            "thumb_url": "/default_stream3_thumb.png"
           }
         ]
       }

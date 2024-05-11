@@ -6,7 +6,7 @@
     <button
         v-if="user"
         id="navbarDropdown"
-        :class="{ 'user-dropdown-button btn text-left text-lg-right': true, username: !user.persona }"
+        :class="{ 'user-dropdown-button text-left text-lg-right': true, username: !user.persona }"
         data-toggle="dropdown"
         aria-haspopup="true"
         aria-expanded="false"
@@ -15,8 +15,8 @@
         <div class="shopper">Shopper:</div>
 
         <div>
-          <div>{{ username }} - {{ user.age }} years - {{ gender }}</div>
-          <div>{{ formattedPreferences }}</div>
+          <div class="shopper-detail">{{ username }} - {{ user.age }} years - {{ gender }}</div>
+          <div class="shopper-detail">{{ formattedPreferences }}</div>
         </div>
       </template>
 
@@ -138,8 +138,23 @@ export default {
   color: var(--blue-600);
 }
 
+.shopper-detail {
+  font-size: 0.6rem;
+  max-width: 170px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .username {
   font-size: 1rem;
+}
+
+@media (min-width: 992px) {
+  .shopper-detail {
+    max-width: 260px;
+    font-size: 0.8rem;
+  }
 }
 
 .dropdown-menu {

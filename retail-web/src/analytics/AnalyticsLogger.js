@@ -75,7 +75,9 @@ export const AnalyticsLogger = {
   sensorDataAnalyticsEnabled() {
     return (
       import.meta.env.VITE_SENSORDATA_APPID !== "" &&
-      import.meta.env.VITE_SENSORDATA_ENDPOINT !== ""
+      import.meta.env.VITE_SENSORDATA_APPID !== undefined &&
+      import.meta.env.VITE_CLICKSTREAM_ENDPOINT !== "" &&
+      import.meta.env.VITE_CLICKSTREAM_ENDPOINT !== undefined
     )
   }
 

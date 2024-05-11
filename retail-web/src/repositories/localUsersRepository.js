@@ -8,7 +8,7 @@ export default {
     if (allUsers.length > 0) {
       return allUsers
     } else {
-      let response = await fetch('../../public/data/users.json')
+      let response = await fetch('/data/users.json')
       allUsers = JSON.parse(await response.text())
       return allUsers
     }

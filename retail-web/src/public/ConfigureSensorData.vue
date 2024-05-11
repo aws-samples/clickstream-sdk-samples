@@ -2,9 +2,8 @@
   <Layout :showNav="false" :showFooter="false" :showTextAlerts="false" :showDemoGuide="false"
           backgroundColor="var(--aws-squid-ink)">
     <div class="container mb-2 text-left">
-      <h3 class="heading my-5 text-center">Configure Clickstream Web SDK</h3>
-      <span>Please fill your appId and endpoint</span>
-
+      <h3 class="heading my-5 text-center">Configure SensorData Web SDK</h3>
+      <span>Please fill your appId and endpoint<br>Note: Your pipeline should use third-party SDK and enable SensorDataTransformer</span>
       <div class="mt-2 mb-4 my-sm-5 custom-mt d-flex flex-column align-items-sm-end">
         <div class="input-field input-group">
           <input placeholder="appId" type="text" class="form-control" v-model="appId" @input="inputChanged">
@@ -26,8 +25,8 @@
 
 <script>
 import Layout from '@/components/Layout/Layout.vue'
-import {ClickstreamAnalytics, SendMode} from "@aws/clickstream-web";
 import swal from "sweetalert";
+import sensors from 'sa-sdk-javascript'
 
 export default {
   name: 'Configure',
@@ -42,8 +41,8 @@ export default {
     };
   },
   async created() {
-    this.appId = localStorage.getItem("clickstream_appId")
-    this.endpoint = localStorage.getItem("clickstream_endpoint")
+    this.appId = localStorage.getItem("sensor_appId")
+    this.endpoint = localStorage.getItem("sensor_endpoint")
     this.inputChanged()
   },
   methods: {
@@ -53,14 +52,21 @@ export default {
     async submit() {
       if (!this.isSubmitEnable) return
       // config SDK
-      localStorage.setItem("clickstream_appId", this.appId)
-      localStorage.setItem("clickstream_endpoint", this.endpoint)
-      ClickstreamAnalytics.init({
-        gtmId: this.appId,
-        endpoint: this.endpoint,
-        isLogEvents: true,
-        sendMode: SendMode.Batch,
-      })
+      localStorage.setItem("sensor_appId", this.appId)
+      localStorage.setItem("sensor_endpoint", this.endpoint)
+
+      sensors.init({
+        server_url: this.endpoint + '?appId=' + this.appId + '&platform=Web&testBy=webRetailDemo',
+        show_log: true,
+        is_track_single_page: true,
+        use_client_time: true,
+        send_type: 'beacon',
+        heatmap: {
+          clickmap: 'default',
+          scroll_notice_map: 'default'
+        }
+      });
+      sensors.quick('autoTrack');
       this.renderSubmitConfirmation()
     },
     renderSubmitConfirmation() {

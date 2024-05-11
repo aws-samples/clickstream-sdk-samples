@@ -13,15 +13,25 @@ import {getAnalytics} from 'firebase/analytics';
 import {AnalyticsLogger} from "@/analytics/AnalyticsLogger";
 
 if (import.meta.env.VITE_CLICKSTREAM_APPID !== ""
-  && import.meta.env.VITE_CLICKSTREAM_ENDPOINT !== "") {
+  && import.meta.env.VITE_CLICKSTREAM_APPID !== undefined
+  && import.meta.env.VITE_CLICKSTREAM_ENDPOINT !== ""
+  && import.meta.env.VITE_CLICKSTREAM_ENDPOINT !== undefined ) {
   localStorage.setItem("clickstream_appId", import.meta.env.VITE_CLICKSTREAM_APPID)
   localStorage.setItem("clickstream_endpoint", import.meta.env.VITE_CLICKSTREAM_ENDPOINT)
+}
+
+if (import.meta.env.VITE_SENSORDATA_APPID !== ""
+  && import.meta.env.VITE_SENSORDATA_APPID !== undefined
+  && import.meta.env.VITE_SENSORDATA_ENDPOINT !== ""
+  && import.meta.env.VITE_SENSORDATA_ENDPOINT !== undefined ) {
+  localStorage.setItem("sensor_appId", import.meta.env.VITE_SENSORDATA_APPID)
+  localStorage.setItem("sensor_endpoint", import.meta.env.VITE_SENSORDATA_ENDPOINT)
 }
 
 // Initial Clickstream Web SDK
 if (localStorage.getItem("clickstream_appId") !== null) {
   ClickstreamAnalytics.init({
-    appId: localStorage.getItem("clickstream_appId"),
+    gtmId: localStorage.getItem("clickstream_appId"),
     endpoint: localStorage.getItem("clickstream_endpoint"),
     isLogEvents: true,
     sendMode: SendMode.Batch,
@@ -31,8 +41,9 @@ if (localStorage.getItem("clickstream_appId") !== null) {
 // Initial Sensor Data Analytics
 if (AnalyticsLogger.sensorDataAnalyticsEnabled()) {
   sensors.init({
-    server_url: import.meta.env.VITE_SENSORDATA_ENDPOINT + '?appId='
-      + import.meta.env.VITE_SENSORDATA_APPID + '&platform=Web&testBy=webRetailDemo',
+    server_url: localStorage.getItem("sensor_endpoint") + '?appId='
+      + localStorage.getItem("sensor_appId") + '&platform=Web&testBy=webRetailDemo',
+    show_log: true,
     is_track_single_page: true,
     use_client_time: true,
     send_type: 'beacon',
