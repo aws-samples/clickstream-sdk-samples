@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     inputChanged() {
-      this.isSubmitEnable = this.appId.length > 0 && this.endpoint.length > 0;
+      this.isSubmitEnable =  this.appId && this.endpoint && this.appId.length > 0 && this.endpoint.length > 0;
     },
     async submit() {
       if (!this.isSubmitEnable) return
