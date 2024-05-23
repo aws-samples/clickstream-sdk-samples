@@ -56,7 +56,7 @@ export default {
       localStorage.setItem("clickstream_appId", this.appId)
       localStorage.setItem("clickstream_endpoint", this.endpoint)
       ClickstreamAnalytics.init({
-        gtmId: this.appId,
+        appId: this.appId,
         endpoint: this.endpoint,
         isLogEvents: true,
         sendMode: SendMode.Batch,
