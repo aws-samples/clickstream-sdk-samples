@@ -39,7 +39,7 @@ if (localStorage.getItem("clickstream_appId") !== null) {
 }
 
 // Initial Sensor Data Analytics
-if (AnalyticsLogger.sensorDataAnalyticsEnabled()) {
+if (localStorage.getItem("sensor_appId") !== null) {
   sensors.init({
     server_url: localStorage.getItem("sensor_endpoint") + '?appId='
       + localStorage.getItem("sensor_appId") + '&platform=Web&testBy=webRetailDemo',

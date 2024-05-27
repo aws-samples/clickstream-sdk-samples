@@ -79,7 +79,9 @@ export default {
       }).then((value) => {
         switch (value) {
           case 'startShopping':
-            this.$router.push('/');
+            this.$router.push('/').then(() => {
+              window.location.reload();
+            });
         }
       });
     },
