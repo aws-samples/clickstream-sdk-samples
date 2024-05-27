@@ -51,6 +51,12 @@ export default {
       this.isSubmitEnable = this.appId && this.endpoint && this.appId.length > 0 && this.endpoint.length > 0
     },
     async submit () {
+      if (this.appId === '') {
+        localStorage.removeItem('clickstream_appId')
+        localStorage.removeItem('clickstream_endpoint')
+        this.renderRemoveConfirmation()
+        return
+      }
       if (!this.isSubmitEnable) return
       // config SDK
       localStorage.setItem('clickstream_appId', this.appId)
@@ -80,6 +86,22 @@ export default {
         switch (value) {
           case 'startShopping':
             this.$router.push('/')
+        }
+      })
+    },
+    renderRemoveConfirmation () {
+      swal({
+        title: 'Clickstream SDK removed successfully',
+        icon: 'success',
+        buttons: {
+          startShopping: 'Start Shopping',
+        },
+      }).then((value) => {
+        switch (value) {
+          case 'startShopping':
+            this.$router.push('/').then(() => {
+              window.location.reload()
+            })
         }
       })
     },

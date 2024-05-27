@@ -25,7 +25,7 @@
 
 <script>
 import Layout from '@/components/Layout/Layout.vue'
-import swal from "sweetalert";
+import swal from 'sweetalert'
 import sensors from 'sa-sdk-javascript'
 
 export default {
@@ -33,27 +33,33 @@ export default {
   components: {
     Layout,
   },
-  data() {
+  data () {
     return {
       appId: '',
       endpoint: '',
       isSubmitEnable: false,
-    };
+    }
   },
-  async created() {
-    this.appId = localStorage.getItem("sensor_appId")
-    this.endpoint = localStorage.getItem("sensor_endpoint")
+  async created () {
+    this.appId = localStorage.getItem('sensor_appId')
+    this.endpoint = localStorage.getItem('sensor_endpoint')
     this.inputChanged()
   },
   methods: {
-    inputChanged() {
-      this.isSubmitEnable =  this.appId && this.endpoint && this.appId.length > 0 && this.endpoint.length > 0;
+    inputChanged () {
+      this.isSubmitEnable = this.appId && this.endpoint && this.appId.length > 0 && this.endpoint.length > 0
     },
-    async submit() {
+    async submit () {
+      if (this.appId === '') {
+        localStorage.removeItem('sensor_appId')
+        localStorage.removeItem('sensor_endpoint')
+        this.renderRemoveConfirmation()
+        return
+      }
       if (!this.isSubmitEnable) return
       // config SDK
-      localStorage.setItem("sensor_appId", this.appId)
-      localStorage.setItem("sensor_endpoint", this.endpoint)
+      localStorage.setItem('sensor_appId', this.appId)
+      localStorage.setItem('sensor_endpoint', this.endpoint)
 
       sensors.init({
         server_url: this.endpoint + '?appId=' + this.appId + '&platform=Web&testBy=webRetailDemo',
@@ -63,13 +69,13 @@ export default {
         send_type: 'beacon',
         heatmap: {
           clickmap: 'default',
-          scroll_notice_map: 'default'
-        }
-      });
-      sensors.quick('autoTrack');
+          scroll_notice_map: 'default',
+        },
+      })
+      sensors.quick('autoTrack')
       this.renderSubmitConfirmation()
     },
-    renderSubmitConfirmation() {
+    renderSubmitConfirmation () {
       swal({
         title: 'Configure Success',
         icon: 'success',
@@ -80,13 +86,29 @@ export default {
         switch (value) {
           case 'startShopping':
             this.$router.push('/').then(() => {
-              window.location.reload();
-            });
+              window.location.reload()
+            })
         }
-      });
+      })
     },
-  }
-};
+    renderRemoveConfirmation () {
+      swal({
+        title: 'SensorData SDK removed successfully',
+        icon: 'success',
+        buttons: {
+          startShopping: 'Start Shopping',
+        },
+      }).then((value) => {
+        switch (value) {
+          case 'startShopping':
+            this.$router.push('/').then(() => {
+              window.location.reload()
+            })
+        }
+      })
+    },
+  },
+}
 </script>
 
 <style scoped>

@@ -45,6 +45,11 @@ export default {
       this.isSubmitEnable = this.gtmId && this.gtmId.length > 0
     },
     async submit () {
+      if (this.gtmId === '') {
+        localStorage.removeItem('gtmId')
+        this.renderRemoveConfirmation()
+        return
+      }
       if (!this.isSubmitEnable) return
       // config SDK
       localStorage.setItem('gtmId', this.gtmId)
@@ -61,8 +66,24 @@ export default {
         switch (value) {
           case 'startShopping':
             this.$router.push('/').then(() => {
-              window.location.reload();
-            });
+              window.location.reload()
+            })
+        }
+      })
+    },
+    renderRemoveConfirmation () {
+      swal({
+        title: 'GTM SDK removed successfully',
+        icon: 'success',
+        buttons: {
+          startShopping: 'Start Shopping',
+        },
+      }).then((value) => {
+        switch (value) {
+          case 'startShopping':
+            this.$router.push('/').then(() => {
+              window.location.reload()
+            })
         }
       })
     },
