@@ -26,44 +26,56 @@
 
 <script>
 import Layout from '@/components/Layout/Layout.vue'
-import {ClickstreamAnalytics, SendMode} from "@aws/clickstream-web";
-import swal from "sweetalert";
+import { ClickstreamAnalytics, SendMode } from '@aws/clickstream-web'
+import swal from 'sweetalert'
 
 export default {
   name: 'Configure',
   components: {
     Layout,
   },
-  data() {
+  data () {
     return {
       appId: '',
       endpoint: '',
       isSubmitEnable: false,
-    };
+    }
   },
-  async created() {
-    this.appId = localStorage.getItem("clickstream_appId")
-    this.endpoint = localStorage.getItem("clickstream_endpoint")
+  async created () {
+    this.appId = localStorage.getItem('clickstream_appId')
+    this.endpoint = localStorage.getItem('clickstream_endpoint')
     this.inputChanged()
   },
   methods: {
-    inputChanged() {
-      this.isSubmitEnable = this.appId.length > 0 && this.endpoint.length > 0;
+    inputChanged () {
+      this.isSubmitEnable = this.appId && this.endpoint && this.appId.length > 0 && this.endpoint.length > 0
     },
-    async submit() {
+    async submit () {
+      if (this.appId === '') {
+        localStorage.removeItem('clickstream_appId')
+        localStorage.removeItem('clickstream_endpoint')
+        this.renderRemoveConfirmation()
+        return
+      }
       if (!this.isSubmitEnable) return
       // config SDK
-      localStorage.setItem("clickstream_appId", this.appId)
-      localStorage.setItem("clickstream_endpoint", this.endpoint)
-      ClickstreamAnalytics.init({
-        gtmId: this.appId,
+      localStorage.setItem('clickstream_appId', this.appId)
+      localStorage.setItem('clickstream_endpoint', this.endpoint)
+      const res = ClickstreamAnalytics.init({
+        appId: this.appId,
         endpoint: this.endpoint,
         isLogEvents: true,
         sendMode: SendMode.Batch,
       })
+      if (!res) {
+        ClickstreamAnalytics.updateConfigure({
+          appId: this.appId,
+          endpoint: this.endpoint,
+        })
+      }
       this.renderSubmitConfirmation()
     },
-    renderSubmitConfirmation() {
+    renderSubmitConfirmation () {
       swal({
         title: 'Configure Success',
         icon: 'success',
@@ -73,12 +85,28 @@ export default {
       }).then((value) => {
         switch (value) {
           case 'startShopping':
-            this.$router.push('/');
+            this.$router.push('/')
         }
-      });
+      })
     },
-  }
-};
+    renderRemoveConfirmation () {
+      swal({
+        title: 'Clickstream SDK removed successfully',
+        icon: 'success',
+        buttons: {
+          startShopping: 'Start Shopping',
+        },
+      }).then((value) => {
+        switch (value) {
+          case 'startShopping':
+            this.$router.push('/').then(() => {
+              window.location.reload()
+            })
+        }
+      })
+    },
+  },
+}
 </script>
 
 <style scoped>

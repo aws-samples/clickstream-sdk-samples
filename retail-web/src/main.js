@@ -34,8 +34,8 @@ if (import.meta.env.VITE_SENSORDATA_APPID !== ''
 // Initial Clickstream Web SDK
 if (localStorage.getItem('clickstream_appId') !== null) {
   ClickstreamAnalytics.init({
-    gtmId: localStorage.getItem('clickstream_appId'),
-    endpoint: localStorage.getItem('clickstream_endpoint'),
+    appId: localStorage.getItem("clickstream_appId"),
+    endpoint: localStorage.getItem("clickstream_endpoint"),
     isLogEvents: true,
     sendMode: SendMode.Batch,
     globalAttributes: {
@@ -52,7 +52,7 @@ if (localStorage.getItem('clickstream_appId') !== null) {
 }
 
 // Initial Sensor Data Analytics
-if (AnalyticsLogger.sensorDataAnalyticsEnabled()) {
+if (localStorage.getItem("sensor_appId") !== null) {
   sensors.init({
     server_url: localStorage.getItem('sensor_endpoint') + '?appId='
       + localStorage.getItem('sensor_appId') +
