@@ -16,8 +16,15 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             let configuration = ClickstreamConfiguration()
                 .withLogEvents(true)
                 .withInitialGlobalAttributes([
-                    "channel": "test",
-                    "isOpenNotification": true,
+                    ClickstreamAnalytics.Attr.TRAFFIC_SOURCE_SOURCE: "amazon",
+                    ClickstreamAnalytics.Attr.TRAFFIC_SOURCE_MEDIUM: "cpc",
+                    ClickstreamAnalytics.Attr.TRAFFIC_SOURCE_CAMPAIGN: "summer_promotion",
+                    ClickstreamAnalytics.Attr.TRAFFIC_SOURCE_CAMPAIGN_ID: "123",
+                    ClickstreamAnalytics.Attr.TRAFFIC_SOURCE_TERM: "running_shoes",
+                    ClickstreamAnalytics.Attr.TRAFFIC_SOURCE_CONTENT: "banner_ad_1",
+                    ClickstreamAnalytics.Attr.TRAFFIC_SOURCE_CLID: "amazon_ad_123",
+                    ClickstreamAnalytics.Attr.TRAFFIC_SOURCE_CLID_PLATFORM: "amazon_ads",
+                    ClickstreamAnalytics.Attr.APP_INSTALL_CHANNEL: "App Store"
                 ])
             try ClickstreamAnalytics.initSDK(configuration)
         } catch {
