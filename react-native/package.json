@@ -3,7 +3,6 @@
   "version": "0.8.8",
   "description": "This project used React Native to build a V2EX mobile client application. The main goal was to build a React Native rapid development scaffold.",
   "main": "index.js",
-  "private": false,
   "scripts": {
     "add:copyright": "curl -sSL https://raw.githubusercontent.com/funnyzak/batch-copyright-updater/main/addCopyright.js | node /dev/stdin src 'Leon' 'silenceace@gmail.com' '.tsx,.ts,.js' 0",
     "postinstall": "patch-package",
