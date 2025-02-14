@@ -3,11 +3,13 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
-    id 'com.google.devtools.ksp' version '1.8.10-1.0.9'
+    id 'com.google.devtools.ksp' version '2.0.20-1.0.24'
     id 'kotlin-parcelize'
+    id("org.jetbrains.kotlin.plugin.compose") version "2.0.20"
 }
 
 android {
+    namespace "com.kanyideveloper.joomia"
     compileSdk 34
 
     defaultConfig {
@@ -30,11 +32,12 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        coreLibraryDesugaringEnabled true
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '21'
         apiVersion = "1.8"
     }
     buildFeatures {
@@ -87,10 +90,11 @@ dependencies {
     implementation "androidx.compose.material:material:$compose_version"
 
     // Hilt for DI
-    implementation "com.google.dagger:hilt-android:2.44"
-    kapt "com.google.dagger:hilt-compiler:2.44"
+    implementation "com.google.dagger:hilt-android:2.51.1"
+    kapt "com.google.dagger:hilt-compiler:2.51.1"
     kapt 'androidx.hilt:hilt-compiler:1.1.0'
     implementation 'androidx.hilt:hilt-navigation-compose:1.2.0-alpha01'
+
     // Navigation made easier
     implementation 'io.github.raamcosta.compose-destinations:core:1.5.9-beta'
     ksp 'io.github.raamcosta.compose-destinations:ksp:1.5.9-beta'
@@ -124,6 +128,8 @@ dependencies {
     def room_version = "2.6.1"
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
+
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.0.9'
 
     implementation 'software.aws.solution:clickstream:0.13.0'
 }
